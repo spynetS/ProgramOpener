@@ -1,3 +1,13 @@
 sub,C:\Program Files\Sublime Text 3\sublime_text.exe
-dis,C:\Users\Elev\Desktop\Discord.lnk
 yt,https://www.youtube.com/
+gh,www.github.com
+sch,https://web.skola24.se/timetable/timetable-viewer/norrkoping.skola24.se/Ebersteinska%20gymnasiet/
+te,https://classroom.google.com/u/1/c/MTQ4MDU2MzM4MjA5
+hi,https://classroom.google.com/u/1/c/MTQ4MDgwOTU1NTMx
+sa,https://classroom.google.com/u/1/c/MTQ4MDgwOTc4MDM2
+sv,https://classroom.google.com/u/1/c/MTQ4MDgwNTg1Mjcw
+en,https://classroom.google.com/u/1/c/MTQyMTkyNzE2ODEw
+ke,https://classroom.google.com/u/1/c/MTQyMTkzMTA4NjA1
+ma,https://classroom.google.com/u/1/c/MTQ4MDgwMjc3NTYz
+cl,https://classroom.google.com/u/1/
+dr,https://drive.google.com/drive/u/1/my-drive

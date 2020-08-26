@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 
 namespace TaskopenerC_sharp
@@ -17,7 +18,7 @@ namespace TaskopenerC_sharp
             string[] lines = File.ReadAllLines(path);
             foreach (string line in lines)
             {
-                Console.WriteLine(line);
+                Console.WriteLine("         "+line);
             }
             Mainloop();
         }
@@ -25,11 +26,32 @@ namespace TaskopenerC_sharp
         void Help()
         {
             Console.WriteLine(".show shows all shortcuts");
+            Console.WriteLine(".exit closes program");
+            Console.WriteLine(".delete deletes shortcut (.delete then enter then write short cut to delete)");
+            Console.WriteLine(".add command to add shortcut (shortcut,webbadress/filepath)");
+            Console.WriteLine(".cancel cancel current proces(takes you to normal mode)");
         }
 
         void AddNewShortCut()
         {
+            Console.WriteLine("Add mode");
+            Console.WriteLine("Add by writing shortcut and then the filepath or the webadress ");
+            Console.WriteLine("Like this: ex,www.example.com, or: ex,,C:/example.exe");
             string newInput = Console.ReadLine();
+            if (newInput == ".cancel")
+                Mainloop();
+            if (newInput == ".show")
+                Show();
+            if (newInput == ".help")
+                Help();
+            if (newInput == ".add")
+                AddNewShortCut();
+            if (newInput == ".delete")
+                DeleteShortCut();
+            if (newInput == ".exit")
+                Environment.Exit(0);
+            if (newInput == ".clear")
+                Console.Clear();
 
             using (StreamWriter sw = new StreamWriter(path, true))
             {
@@ -40,11 +62,26 @@ namespace TaskopenerC_sharp
 
         void DeleteShortCut()
         {
+            Console.WriteLine("Delete mode");
+            Console.WriteLine("Write the shortcut you want to delete");
             string input = Console.ReadLine();
             string[] lines = File.ReadAllLines(path);
             ArrayList newList = new ArrayList();
 
-
+            if (input == ".cancel")
+                Mainloop();
+            if (input == ".show")
+                Show();
+            if (input == ".help")
+                Help();
+            if (input == ".add")
+                AddNewShortCut();
+            if (input == ".delete")
+                DeleteShortCut();
+            if (input == ".exit")
+                Environment.Exit(0);
+            if (input == ".clear")
+                Console.Clear();
             foreach (string line in lines)
             {
                 if (input != line.Split(',')[0])
@@ -68,7 +105,8 @@ namespace TaskopenerC_sharp
 
         public void Mainloop()
         {
-            Console.WriteLine("main");
+            Console.WriteLine("Open mode");
+            Console.WriteLine(".help for help");
             string input = Console.ReadLine();
             if (input == ".show")
                 Show();
@@ -78,6 +116,12 @@ namespace TaskopenerC_sharp
                 AddNewShortCut();
             if (input == ".delete")
                 DeleteShortCut();
+            if (input == ".exit")
+                Environment.Exit(0);
+            if (input == ".clear")
+                Console.Clear();
+
+
             string[] lines = File.ReadAllLines(path);
             foreach (string line in lines)
             {
