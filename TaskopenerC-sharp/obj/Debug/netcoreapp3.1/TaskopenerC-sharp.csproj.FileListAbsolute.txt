@@ -1,0 +1,13 @@
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\bin\Debug\netcoreapp3.1\TaskopenerC-sharp.exe
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\bin\Debug\netcoreapp3.1\TaskopenerC-sharp.deps.json
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\bin\Debug\netcoreapp3.1\TaskopenerC-sharp.runtimeconfig.json
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\bin\Debug\netcoreapp3.1\TaskopenerC-sharp.runtimeconfig.dev.json
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\bin\Debug\netcoreapp3.1\TaskopenerC-sharp.dll
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\bin\Debug\netcoreapp3.1\TaskopenerC-sharp.pdb
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\obj\Debug\netcoreapp3.1\TaskopenerC-sharp.csprojAssemblyReference.cache
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\obj\Debug\netcoreapp3.1\TaskopenerC-sharp.AssemblyInfoInputs.cache
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\obj\Debug\netcoreapp3.1\TaskopenerC-sharp.AssemblyInfo.cs
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\obj\Debug\netcoreapp3.1\TaskopenerC-sharp.csproj.CoreCompileInputs.cache
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\obj\Debug\netcoreapp3.1\TaskopenerC-sharp.dll
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\obj\Debug\netcoreapp3.1\TaskopenerC-sharp.pdb
+C:\Users\Elev\Desktop\Projects\TaskopenerC-sharp\TaskopenerC-sharp\obj\Debug\netcoreapp3.1\TaskopenerC-sharp.genruntimeconfig.cache

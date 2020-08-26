@@ -1,0 +1,3 @@
+sub,C:\Program Files\Sublime Text 3\sublime_text.exe
+dis,C:\Users\Elev\Desktop\Discord.lnk
+yt,https://www.youtube.com/
