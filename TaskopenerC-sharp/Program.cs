@@ -18,6 +18,7 @@ namespace TaskopenerC_sharp
             string[] lines = File.ReadAllLines(path);
             foreach (string line in lines)
             {
+
                 Console.WriteLine("         "+line);
             }
             Mainloop();
@@ -30,6 +31,26 @@ namespace TaskopenerC_sharp
             Console.WriteLine(".delete deletes shortcut (.delete then enter then write short cut to delete)");
             Console.WriteLine(".add command to add shortcut (shortcut,webbadress/filepath)");
             Console.WriteLine(".cancel cancel current proces(takes you to normal mode)");
+        }
+
+        private bool CheckIfShortCutIsInUsed(string shortcut)
+        {
+            string[] lines = File.ReadAllLines(path);
+            foreach (string line in lines)
+            {
+                string shortcutinfile = line.Split(',')[0];
+                if (shortcutinfile == shortcut.Split(',')[0])
+                {
+
+                    Console.WriteLine("true");
+
+                    return true;
+                }
+                
+            }
+
+            return false;
+
         }
 
         void AddNewShortCut()
@@ -52,11 +73,28 @@ namespace TaskopenerC_sharp
                 Environment.Exit(0);
             if (newInput == ".clear")
                 Console.Clear();
-
-            using (StreamWriter sw = new StreamWriter(path, true))
+            /*if (!newInput.Contains(","))
             {
-                sw.Write(newInput + "\r\n");
+                Console.WriteLine("Like this: ex,www.example.com, or: ex,,C:/example.exe");
+                AddNewShortCut();
+            }*/
+            Console.WriteLine(CheckIfShortCutIsInUsed(newInput));
+            if (CheckIfShortCutIsInUsed(newInput)==true)
+            {
+                Console.WriteLine("This short cut is already in use");
+
             }
+            else
+            {
+                Console.WriteLine("else");
+
+                using (StreamWriter sw = new StreamWriter(path, true))
+                {
+                    sw.Write(newInput + "\r\n");
+                    CheckIfContainswrongchar(newInput);
+                }
+            }
+           
 
         }
 
@@ -149,6 +187,18 @@ namespace TaskopenerC_sharp
             Mainloop();
         }
 
+        private string CheckIfContainswrongchar(string thestring)
+        {
+            if (thestring.Contains('"'))
+            {
+                Console.WriteLine("checking");
+                string stringwithoutchar = thestring.Split(',')[1].Split('"')[1];
+                Console.WriteLine("without "+stringwithoutchar);
+                return stringwithoutchar;
+            }
+            else return null;
+        }
+
         private bool CheckIfShortCut(string fileName)
         {
             if (fileName.Contains(".lnk")) { return true; }
@@ -217,7 +267,20 @@ namespace TaskopenerC_sharp
         static void Main(string[] args)
         {
             Program p = new Program();
-            p.Mainloop();
+
+            if (File.Exists(path))
+            {
+                p.Mainloop();
+            }
+            else 
+            {
+                using (StreamWriter sw = new StreamWriter(path))
+                {
+                    sw.Write(" ");
+                    Console.WriteLine("not");
+
+                }
+            }
         }
     }
 }
