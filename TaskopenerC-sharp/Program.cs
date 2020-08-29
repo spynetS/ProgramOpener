@@ -11,6 +11,7 @@ namespace TaskopenerC_sharp
 {
     class Program
     {
+        private const char V = '"';
         static string path = "urls.txt";
 
         void Show()
@@ -90,7 +91,7 @@ namespace TaskopenerC_sharp
 
                 using (StreamWriter sw = new StreamWriter(path, true))
                 {
-                    sw.Write(CheckIfContainswrongchar(newInput)+"\r\n");
+                    sw.Write(CheckIfContainswrongchar(newInput) +"\r\n");
                 }
             }
            
@@ -190,9 +191,7 @@ namespace TaskopenerC_sharp
         {
             if (thestring.Contains('"'))
             {
-                Console.WriteLine("checking");
                 string stringwithoutchar = thestring.Split(',')[1].Split('"')[1];
-                Console.WriteLine("without "+stringwithoutchar);
              
                 return thestring.Split(',')[0]+","+stringwithoutchar;
             }
