@@ -16,3 +16,4 @@ mc,C:\Users\Elev\Desktop\Sublime Text 3.lnk
 dis,C:\Users\Elev\Desktop\Discord.lnk
 go,www.goolge.com
 sa,https://classroom.google.com/u/1/c/MTQ4MDgwOTc4MDM2
+vis,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio 2019.lnk

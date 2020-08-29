@@ -90,8 +90,7 @@ namespace TaskopenerC_sharp
 
                 using (StreamWriter sw = new StreamWriter(path, true))
                 {
-                    sw.Write(newInput + "\r\n");
-                    CheckIfContainswrongchar(newInput);
+                    sw.Write(CheckIfContainswrongchar(newInput)+"\r\n");
                 }
             }
            
@@ -194,9 +193,10 @@ namespace TaskopenerC_sharp
                 Console.WriteLine("checking");
                 string stringwithoutchar = thestring.Split(',')[1].Split('"')[1];
                 Console.WriteLine("without "+stringwithoutchar);
-                return stringwithoutchar;
+             
+                return thestring.Split(',')[0]+","+stringwithoutchar;
             }
-            else return null;
+            else return thestring;
         }
 
         private bool CheckIfShortCut(string fileName)
