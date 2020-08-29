@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Enumeration;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 namespace TaskopenerC_sharp
 {
@@ -13,7 +16,6 @@ namespace TaskopenerC_sharp
     {
         private const char V = '"';
         static string path = "urls.txt";
-
         void Show()
         {
             string[] lines = File.ReadAllLines(path);
@@ -97,7 +99,102 @@ namespace TaskopenerC_sharp
            
 
         }
+        void ListGroup(string filename)
+        {
+            if (filename == null)
+            {
+                Console.WriteLine("Write groupname");
+                DirectoryInfo d = new DirectoryInfo("groups\\");//Assuming Test is your Folder
+                FileInfo[] Files = d.GetFiles("*.txt"); //Getting Text files
+                string str = "";
+                foreach (FileInfo file in Files)
+                {
+                    Console.WriteLine(file.Name);
+                }
+                string groupname = Console.ReadLine();
+                filename = "groups\\" + groupname + ".txt";
+            }
 
+            string[] lines = File.ReadAllLines(filename);
+                foreach (string line in lines)
+                {
+                    Console.WriteLine(line);
+                }
+            
+           
+        }
+        void AddToGroup(string filename)
+        {
+         
+            if (filename == null)
+            {
+                Console.WriteLine("Write name of the group");
+                string groupname = Console.ReadLine();
+                filename = "groups\\" + groupname + ".txt";
+            }
+
+            string newshortcuts = Console.ReadLine();
+            string[] newlist = newshortcuts.Split(',');
+            using (StreamWriter sw = new StreamWriter(filename, true))
+            {
+                Console.WriteLine("Write all shortcuts that to the group (like this ex,ex2,ex3)");
+
+                for (int i = 0; i < newlist.Length; i++)
+                {
+                    sw.WriteLine(newlist[i]);
+                }
+            }
+        }
+        void CreateGroup()
+        {
+            Console.WriteLine("Write name of group");
+            string groupName = Console.ReadLine();
+            Console.WriteLine("Write all shortcuts that to the group (like this ex,ex2,ex3)");
+            string shortcuts = Console.ReadLine();
+            string[] list = shortcuts.Split(',');
+            if (!File.Exists(groupName + ".txt"))
+            {
+                
+                    using (StreamWriter sw = new StreamWriter("groups\\"+groupName + ".txt"))
+                {
+
+                    for (int i = 0; i < list.Length; i++)
+                    {
+                        sw.WriteLine(list[i]);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("This group already exists. Do you want to list the shortcuts?[Y/N]");
+                string input = Console.ReadLine();
+                if (input == "Y")
+                {
+                    ListGroup(groupName+".txt");
+
+                }
+                Console.WriteLine("Do you want to add to it?[Y/N]");
+                string input1 = Console.ReadLine();
+                if (input1 == "Y")
+                {
+                    Console.WriteLine("Write all shortcuts that to the group (like this ex,ex2,ex3)");
+
+                    AddToGroup(groupName+".txt");   
+                }
+                Console.WriteLine("Do you want to delete this group?[Y/N]");
+                string input2 = Console.ReadLine();
+                if (input2 == "Y")
+                {
+                    File.Delete(groupName + ".txt");
+                                        }
+                else
+                {
+                    Mainloop();
+                }
+            }
+                
+
+        }
         void DeleteShortCut()
         {
             Console.WriteLine("Delete mode");
@@ -158,29 +255,41 @@ namespace TaskopenerC_sharp
                 Environment.Exit(0);
             if (input == ".clear")
                 Console.Clear();
-
-
+            if (input == ".group")
+                CreateGroup();
+            if (input == ".grouplist")
+                ListGroup(null);
+            if (input == ".groupadd")
+                AddToGroup(null);
             string[] lines = File.ReadAllLines(path);
             foreach (string line in lines)
             {
                 string[] linesplitted = line.Split(',');
                 if (input== linesplitted[0])
                 {
-                    if (CheckIfShortCut(linesplitted[1]))
+                    if (File.Exists(input + ".txt"))
                     {
-                        Process.Start(GetShortcutTarget(linesplitted[1]));
+                        
                     }
-                    else
+                    else 
                     {
-
-                        Console.WriteLine(linesplitted[1]);
-                        var psi = new ProcessStartInfo
+                        if (CheckIfShortCut(linesplitted[1]))
                         {
-                            FileName = linesplitted[1],
-                            UseShellExecute = true
-                        };
-                        Process.Start(psi);
+                            Process.Start(GetShortcutTarget(linesplitted[1]));
+                        }
+                        else
+                        {
+
+                            Console.WriteLine(linesplitted[1]);
+                            var psi = new ProcessStartInfo
+                            {
+                                FileName = linesplitted[1],
+                                UseShellExecute = true
+                            };
+                            Process.Start(psi);
+                        }
                     }
+                    
                 }
             }
 
